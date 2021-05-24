@@ -1,5 +1,7 @@
 ## A plugin for [Shopware 6](https://github.com/shopware/platform)
 
+![](https://i.imgur.com/OR8aM6K.png)
+
 ## Requirements
 
 | Version 	| Requirements               	|
