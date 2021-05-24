@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Display form</title>
+        <input-field type="bool">
+            <name>active</name>
+            <label>Display newsletter form in footer</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>bootstrapColumn</name>
+            <options>
+                <option>
+                    <id>col-md-3</id>
+                    <name>col-md-3 (25%)</name>
+                </option>
+                <option>
+                    <id>col-md-4</id>
+                    <name>col-md-4 (33%)</name>
+                </option>
+                <option>
+                    <id>col-md-6</id>
+                    <name>col-md-6 (50%)</name>
+                </option>
+            </options>
+            <defaultValue>col-md-4</defaultValue>
+            <label>Bootstrap column</label>
+        </input-field>
+    </card>
+
+</config>

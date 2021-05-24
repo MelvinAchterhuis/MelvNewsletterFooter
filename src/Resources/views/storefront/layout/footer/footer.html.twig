@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_navigation_columns %}
+    {{ parent() }}
+    {% if config('MelvNewsletterFooter.config.active') %}
+        {% sw_include '@MelvNewsletterFooter/plugin/melv-newsletter-footer.html.twig' %}
+    {% endif %}
+{% endblock %}

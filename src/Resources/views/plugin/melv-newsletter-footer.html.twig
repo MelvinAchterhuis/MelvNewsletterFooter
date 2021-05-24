@@ -1,0 +1,69 @@
+{% block layout_footer_newsletter_column %}
+    {% set bootstrapColumn = config('MelvNewsletterFooter.config.bootstrapColumn') %}
+    <div class="{% if bootstrapColumn %}{{ bootstrapColumn}}{% else %}col-md-4{% endif%} footer-column js-footer-column">
+         {% block layout_footer_newsletter_information_headline %}
+            <div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+                 id="collapseFooterNewsletterTitle"
+                 data-target="#collapseFooterNewsletter"
+                 aria-expanded="true"
+                 aria-controls="collapseFooterNewsletter">
+                    {{ 'newsletter.headline'|trans|sw_sanitize }}
+                    {% block layout_footer_newsletter_information_icons %}
+                        <div class="footer-column-toggle">
+                            <span class="footer-plus-icon">
+                                {% sw_icon 'plus' %}
+                            </span>
+                            <span class="footer-minus-icon">
+                                {% sw_icon 'minus' %}
+                            </span>
+                        </div>
+                    {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block layout_footer_newsletter_information_content %}
+            <div id="collapseFooterNewsletter"
+                 class="footer-column-content collapse js-footer-column-content footer-contact"
+                 aria-labelledby="collapseFooterNewsletterTitle">
+                <div class="footer-column-content-inner">
+                    {% block layout_footer_newsletter_information_form %}
+                        {# These classes are neccesary, changing them will result in a not working form #}
+                        <div class="cms-block footer-newsletter">
+                            <div class="cms-element-form">
+                                <form action="{{ path('frontend.form.newsletter.register.handle') }}"
+                                      method="post"
+                                      data-form-csrf-handler="true"
+                                      data-form-validation="true">
+                                    {{ sw_csrf('frontend.form.newsletter.register.handle') }}
+                                    {% set formViolations = app.request.get('errors') %}
+                                    <input type="hidden" name="option" value="subscribe"/>
+                                    <input type="submit" class="submit--hidden d-none">
+                                    <div class="form-content">
+                                        <div class="form-group input-group">
+                                            <label class="form-label w-100" for="footerNewsletterMail">
+                                                {{ "newsletter.labelMail"|trans }}<span>{{ "general.required"|trans }}</span>
+                                            </label>
+                                            <input name="email"
+                                                   type="email"
+                                                   id="footerNewsletterMail"
+                                                   placeholder="{{ "newsletter.placeholderMail"|trans }}"
+                                                   required="required"
+                                                   value="{{ data.get('email') }}"
+                                                   class="form-control{% if formViolations.getViolations('/email') %} is-invalid{% endif %} rounded"/>
+                                        </div>
+                                        {% block layout_footer_newsletter_information_form_captcha %}
+                                            {% sw_include '@Storefront/storefront/component/captcha/base.html.twig' with { 'captchas': config('core.basicInformation.activeCaptchas') } %}
+                                        {% endblock %}
+                                        <button type="submit" class="btn btn-primary w-25">
+                                            {{ "general.formSubmit"|trans }}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    {% endblock%}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

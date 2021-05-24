@@ -1,0 +1,33 @@
+{
+    "name": "melvinachterhuis/newsletter-footer-shopware6-plugin",
+    "description": "Newsletter form in the footer",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Melvin Achterhuis"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.4.*",
+        "shopware/storefront": "6.4.*",
+        "shopware/administration": "6.4.*"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "Melv\\NewsletterFooter\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Melv\\NewsletterFooter\\MelvNewsletterFooter",
+        "label": {
+            "de-DE": "Newsletter Fußzeile",
+            "en-GB": "Newsletter Footer"
+        },
+        "description": {
+            "de-DE": "Newsletter-Formular in der Fußzeile",
+            "en-GB": "Newsletter form in the footer"
+        }
+    }
+}
