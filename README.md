@@ -1,5 +1,7 @@
 ## A plugin for [Shopware 6](https://github.com/shopware/platform)
 
+Show the newsletter subscribe form inside the footer
+
 ![](https://i.imgur.com/OR8aM6K.png)
 
 ## Requirements
